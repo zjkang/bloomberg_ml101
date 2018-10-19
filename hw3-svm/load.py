@@ -31,8 +31,8 @@ def read_data(file):
     f = open(file)
     lines = f.read().split(' ')
     symbols = '${}()[].,:;+-*/&|<>=~" '
-    words = map(lambda Element: Element.translate(str.maketrans("", "", symbols)).strip(), lines)
-    words = filter(None, words)
+    words = list(map(lambda Element: Element.translate(str.maketrans("", "", symbols)).strip(), lines))
+    words = list(filter(None, words))
     return words
 	
 ###############################################
@@ -52,6 +52,8 @@ def shuffle_data():
 	
     review = pos_review + neg_review
     random.shuffle(review)
+    
+    pickle.dump(review, open( "save.p", "wb"))
 	
 '''
 Now you have read all the files into list 'review' and it has been shuffled.
@@ -59,5 +61,3 @@ Save your shuffled result by pickle.
 *Pickle is a useful module to serialize a python object structure. 
 *Check it out. https://wiki.python.org/moin/UsingPickle
 '''
- 
-

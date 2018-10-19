@@ -26,3 +26,7 @@ def increment(d1, scale, d2):
     """
     for f, v in d2.items():
         d1[f] = d1.get(f, 0) + v * scale
+
+def scaleProduct(d1, scale):
+    for k, v in d1.items():
+        d1[k] = v * scale
